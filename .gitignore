@@ -1,0 +1,17 @@
+**/target
+
+**/.idea
+
+**/target/
+!.mvn/wrapper/maven-wrapper.jar
+!/src/test//target/!/src/main/
+*.iws
+*.iml
+*.ipr
+mvnw
+mvnw.cmd
+**/logs
+.mvn
+**/ExtentReports
+
+**/Executables
