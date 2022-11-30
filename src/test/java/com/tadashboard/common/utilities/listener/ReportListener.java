@@ -2,8 +2,8 @@ package com.tadashboard.common.utilities.listener;
 
 import com.aventstack.extentreports.Status;
 import com.tadashboard.common.utilities.DriverManager;
-import com.tadashboard.common.utilities.extentreports.ExtentManager;
-import com.tadashboard.common.utilities.extentreports.ExtentTestManager;
+import com.tadashboard.common.utilities.reports.ExtentManager;
+import com.tadashboard.common.utilities.reports.ExtentTestManager;
 import com.tadashboard.common.utilities.logs.Log;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
