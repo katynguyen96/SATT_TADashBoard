@@ -8,12 +8,12 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class TC009 extends BaseTestSetUp {
-    @Test
-    public void TC004_LoginDifferentRepo() throws InterruptedException {
+    @Test(description = "Verify that username with special characters is working correctly")
+    public void TC009_LoginSpecialCharacter() throws InterruptedException {
         LoginPage loginPage = new LoginPage();
         Log.info("Login with valid account");
         loginPage.login("minh!@^","");
-        String DBUrl = DriverManager.getDriver().getCurrentUrl();
-        Assert.assertTrue(DBUrl.contains("http://localhost/TADashboard/"));
+        String DBTitle = DriverManager.getDriver().getTitle();
+        Assert.assertEquals(DBTitle,"TestArchitect ™ - Execution Dashboard");
     }
 }

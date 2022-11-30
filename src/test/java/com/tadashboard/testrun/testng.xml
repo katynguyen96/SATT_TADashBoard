@@ -6,7 +6,7 @@
     </listeners>
     <test name="Railway test">
         <classes>
-            <class name="com.tadashboard.testcases.DA_LOGIN.TC004"/>
+            <class name="com.tadashboard.testcases.DA_LOGIN.TC009"/>
         </classes>
     </test>
 </suite>

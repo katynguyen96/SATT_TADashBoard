@@ -2,6 +2,7 @@ package com.tadashboard.common.utilities;
 
 import com.tadashboard.common.utilities.reader.ConfigFileReader;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -103,6 +104,19 @@ public class DriverManager {
     public static void Hover(WebDriver driver, WebElement element) {
         Actions action = new Actions(driver);
         action.moveToElement(element).perform();
+    }
+
+    public static String getAlertMessage(){
+        return DriverManager.getDriver().switchTo().alert().getText();
+    }
+
+    public static Boolean isAlertDisplayed(){
+        try {
+            driver.switchTo().alert();
+            return true;
+        } catch (NoAlertPresentException Ex){
+            return false;
+        }
     }
 
     public static void close() {
