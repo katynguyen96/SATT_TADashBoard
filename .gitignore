@@ -10,8 +10,7 @@
 *.ipr
 mvnw
 mvnw.cmd
-**/logs
 .mvn
-**/ExtentReports
+ExtentReports
 
 **/Executables
