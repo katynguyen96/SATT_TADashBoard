@@ -14,7 +14,7 @@ import java.sql.Driver;
 
 public class TC029 extends BaseTestSetUp {
     @Test(description = "Verify that user is unable to create new panel when (*) required field is not filled")
-    public void TC029_AddEmptyPanel() throws InterruptedException {
+    public void TC029_AddEmptyPanel() {
         ConfigFileReader configFileReader = new ConfigFileReader();
         LoginPage loginPage = new LoginPage();
         Log.info("Login with valid account");

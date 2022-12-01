@@ -31,14 +31,9 @@ public class LoginPage extends BasePage{
         return new Select(getDdlListRepo());
     }
 
-    public void login(String username, String password) throws InterruptedException {
+    public void login(String username, String password) {
         getTxtUsername().sendKeys(username);
         getTxtPassword().sendKeys(password);
         getBtnLogin().click();
-        Thread.sleep(1000);
-    }
-
-    public void selectRepo(String repoName){
-        listRepo().selectByVisibleText(repoName);
     }
 }

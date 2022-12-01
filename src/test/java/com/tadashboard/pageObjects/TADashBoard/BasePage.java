@@ -18,6 +18,8 @@ public class BasePage {
     private final By lnkOverView = By.xpath("//li[@class='haschild']");
     private final String lnkPageChildren = "//li[@class='haschild']//a[text()='%s']";
     private final By lnkPanels = By.xpath("//ul[@id='ulAdminister']//a[@href='panels.jsp']");
+    private final By lnkDataProfiles = By.xpath("//ul[@id='ulAdminister']//a[@href='profiles.jsp']");
+    private final By ddlItemTypes = By.xpath("//select[@id='cbbEntityType']");
     private final By lnkAddNew = By.xpath("//a[text()='Add New']");
     private final By btnPanelPopupOK = By.xpath("//div[@class='ui-dialog-container']//input[@id='OK']");
     private final By lnkCreatePanel = By.xpath("//a[.='Create Panel']");
@@ -26,99 +28,121 @@ public class BasePage {
     private final By btnEditPanel = By.xpath("//li[@class='edit']");
     private final By lnkOpenFolder = By.xpath("//a[@title='Open']");
     private final String lnkProject = "//a[text() ='%s']";
+    private final String lnkToggle = "//a[text()='%s']//preceding-sibling::a";
+    private final By lnkActions = By.xpath("//a[text()=' Actions']");
     private final By btnSelectFolderOK = By.id("btnFolderSelectionOK");
     private final By txtFolderPath = By.id("txtFolder");
 
-    private WebElement getLnkLogout() {
+    protected WebElement getLnkLogout() {
         return DriverManager.getDriver().findElement(lnkLogout);
     }
 
-    private WebElement getLnkSetting() {
+    protected WebElement getLnkSetting() {
         return DriverManager.getDriver().findElement(lnkSetting);
     }
 
-    private WebElement getLnkAddPage() {
+    protected WebElement getLnkAddPage() {
         return DriverManager.getDriver().findElement(lnkAddPage);
     }
 
-    private WebElement getLnkWelcome() {
+    protected WebElement getLnkWelcome() {
         return DriverManager.getDriver().findElement(lnkWelcome);
     }
 
-    private WebElement getTxtPageName(){
+    protected WebElement getTxtPageName(){
         return DriverManager.getDriver().findElement(txtPageName);
     }
 
-    private WebElement getDdlParentPage(){
+    protected WebElement getDdlParentPage(){
         return DriverManager.getDriver().findElement(ddlParentPage);
     }
 
-    private WebElement getBtnOK(){
+    protected WebElement getBtnOK(){
         return DriverManager.getDriver().findElement(btnOkNewPagePopupOK);
     }
 
-    private Select getParentPage(){
+    protected Select getParentPage(){
         return new Select(getDdlParentPage());
     }
 
-    private WebElement getLnkAdmin(){
+    protected WebElement getLnkAdmin(){
         return DriverManager.getDriver().findElement(lnkAdmin);
     }
 
-    private WebElement getLnkPanels(){
+    protected WebElement getLnkPanels(){
         return DriverManager.getDriver().findElement(lnkPanels);
     }
 
-    private WebElement getLnkAddNew(){
+    protected WebElement getLnkProfiles(){
+        return DriverManager.getDriver().findElement(lnkDataProfiles);
+    }
+
+    protected WebElement getDdlItemTypes(){
+        return DriverManager.getDriver().findElement(ddlItemTypes);
+    }
+
+    protected Select getItemTypes(){
+        return new Select(getDdlItemTypes());
+    }
+
+    protected WebElement getLnkAddNew(){
         return DriverManager.getDriver().findElement(lnkAddNew);
     }
 
-    private WebElement getBtnPanelPopupOK(){
+    protected WebElement getBtnPanelPopupOK(){
         return DriverManager.getDriver().findElement(btnPanelPopupOK);
     }
 
-    private WebElement getLnkOverView(){
+    protected WebElement getLnkOverView(){
         return DriverManager.getDriver().findElement(lnkOverView);
     }
 
-    private WebElement getLnkCreatePanel(){
+    protected WebElement getLnkCreatePanel(){
         return DriverManager.getDriver().findElement(lnkCreatePanel);
     }
 
-    private WebElement getTxtDisplayName(){
+    protected WebElement getTxtDisplayName(){
         return DriverManager.getDriver().findElement(txtDisplayName);
     }
 
-    private WebElement getDdlSeries(){
+    protected WebElement getDdlSeries(){
         return DriverManager.getDriver().findElement(ddlSeries);
     }
 
-    private Select getSeries(){
+    protected Select getSeries(){
         return new Select(getDdlSeries());
     }
 
-    private WebElement getBtnEditPanel(){
+    protected WebElement getBtnEditPanel(){
         return DriverManager.getDriver().findElement(btnEditPanel);
     }
 
-    private WebElement getLnkOpenFolder(){
+    protected WebElement getLnkOpenFolder(){
         return DriverManager.getDriver().findElement(lnkOpenFolder);
     }
 
-    private WebElement getPanelConfigOk(){
+    protected WebElement getPanelConfigOk(){
         return DriverManager.getDriver().findElement(lnkPanelConfigurationOk);
     }
 
-    private WebElement getBtnSelectFolderOK(){
+    protected WebElement getBtnSelectFolderOK(){
         return DriverManager.getDriver().findElement(btnSelectFolderOK);
     }
 
-    private WebElement getTxtFolderPath(){
+    protected WebElement getTxtFolderPath(){
         return DriverManager.getDriver().findElement(txtFolderPath);
     }
 
+    protected WebElement getLnkToggle(String projectName){
+        return DriverManager.getDriver().findElement(By.xpath(String.format(lnkToggle,projectName)));
+    }
+
+    protected WebElement getLnkActions(){
+        return DriverManager.getDriver().findElement(lnkActions);
+    }
+
     public String getFolderPath(){
-        return getTxtFolderPath().getText();
+        return getTxtFolderPath().getAttribute("value");
     }
     public void logout() {
         DriverManager.Hover(DriverManager.getDriver(), getLnkWelcome());
@@ -158,6 +182,8 @@ public class BasePage {
         getBtnEditPanel().click();
         getLnkOpenFolder().click();
         DriverManager.getDriver().findElement(By.xpath(String.format(lnkProject, projectName))).click();
+        getLnkToggle(projectName).click();
+        getLnkActions().click();
         getBtnSelectFolderOK().click();
     }
 }
