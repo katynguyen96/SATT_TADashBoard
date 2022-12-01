@@ -5,29 +5,30 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
-public class LoginPage extends BasePage{
+public class LoginPage extends BasePage {
     private final By txtUsername = By.id("username");
     private final By txtPassword = By.id("password");
     private final By btnLogin = By.className("btn-login");
     private final By ddlListRepo = By.xpath("//select[@class='list']");
 
 
-    private WebElement getTxtUsername(){
+    private WebElement getTxtUsername() {
         return DriverManager.getDriver().findElement(txtUsername);
     }
 
-    private WebElement getTxtPassword(){
+    private WebElement getTxtPassword() {
         return DriverManager.getDriver().findElement(txtPassword);
     }
 
-    private WebElement getBtnLogin(){
+    private WebElement getBtnLogin() {
         return DriverManager.getDriver().findElement(btnLogin);
     }
-    private WebElement getDdlListRepo(){
+
+    private WebElement getDdlListRepo() {
         return DriverManager.getDriver().findElement(ddlListRepo);
     }
 
-    private Select listRepo(){
+    private Select listRepo() {
         return new Select(getDdlListRepo());
     }
 

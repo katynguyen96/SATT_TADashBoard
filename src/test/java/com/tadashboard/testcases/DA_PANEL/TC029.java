@@ -18,16 +18,16 @@ public class TC029 extends BaseTestSetUp {
         ConfigFileReader configFileReader = new ConfigFileReader();
         LoginPage loginPage = new LoginPage();
         Log.info("Login with valid account");
-        loginPage.login(configFileReader.getUsername(),"");
+        loginPage.login(configFileReader.getUsername(), "");
         BasePage basePage = new BasePage();
         Log.info("Click on Administer/Panels link");
         Log.info("Click on Add new link");
         Log.info("Click on OK button");
         basePage.addEmptyPanel();
         String message = DriverManager.getAlertMessage();
-        SoftAssert softAssert =  new SoftAssert();
+        SoftAssert softAssert = new SoftAssert();
         softAssert.assertTrue(DriverManager.isAlertDisplayed());
-        softAssert.assertEquals(message,"Display Name is a required field.");
+        softAssert.assertEquals(message, "Display Name is a required field.");
         softAssert.assertAll();
     }
 }

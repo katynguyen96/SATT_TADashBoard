@@ -12,17 +12,17 @@ public class TC049 extends BaseTestSetUp {
     public void TC049_folderPathCorrect() throws InterruptedException {
         LoginPage loginPage = new LoginPage();
         Log.info("Login with valid account");
-        loginPage.login("test","test");
+        loginPage.login("test", "test");
         BasePage basePage = new BasePage();
         Log.info("Go to Global Setting -> Add page");
         Log.info("Enter info into all required fields on New Page dialog");
-        basePage.addPage("Page 1","Select parent");
+        basePage.addPage("Page 1", "Select parent");
         Thread.sleep(1000);
-        basePage.createPanel("Panel 2","name");
+        basePage.createPanel("Panel 2", "name");
         String repoName = " Music Library";
-        String path = repoName.replace("/","").trim()+"/Actions";
+        String path = repoName.replace("/", "").trim() + "/Actions";
         basePage.changeFolderPath(repoName);
-        String folderPath = basePage.getFolderPath().replaceFirst("/","");
-        Assert.assertEquals(folderPath,path);
+        String folderPath = basePage.getFolderPath().replaceFirst("/", "");
+        Assert.assertEquals(folderPath, path);
     }
 }

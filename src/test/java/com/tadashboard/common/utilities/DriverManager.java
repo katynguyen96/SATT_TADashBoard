@@ -97,7 +97,7 @@ public class DriverManager {
         DriverManager.getDriver().switchTo().alert().accept();
     }
 
-    public static void setImplicitlyWait(long duration){
+    public static void setImplicitlyWait(long duration) {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(duration));
     }
 
@@ -106,15 +106,15 @@ public class DriverManager {
         action.moveToElement(element).perform();
     }
 
-    public static String getAlertMessage(){
+    public static String getAlertMessage() {
         return DriverManager.getDriver().switchTo().alert().getText();
     }
 
-    public static Boolean isAlertDisplayed(){
+    public static Boolean isAlertDisplayed() {
         try {
             driver.switchTo().alert();
             return true;
-        } catch (NoAlertPresentException Ex){
+        } catch (NoAlertPresentException Ex) {
             return false;
         }
     }

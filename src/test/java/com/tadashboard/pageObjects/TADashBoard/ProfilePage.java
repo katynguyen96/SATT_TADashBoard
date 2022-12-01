@@ -10,7 +10,7 @@ import org.openqa.selenium.support.ui.Select;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class ProfilePage extends BasePage{
+public class ProfilePage extends BasePage {
     private final By txtProfileName = By.xpath("//input[@id='txtProfileName']");
     private final By btnNext = By.xpath("//input[@value='Next']");
     private final By liFilterField = By.xpath("//li[text()='Filter Fields']");
@@ -23,56 +23,56 @@ public class ProfilePage extends BasePage{
     private final By txtValue = By.id("txtSearchText");
     private final String randomValue = Utilities.randomString(5);
 
-    private WebElement getTxtProfileName(){
+    private WebElement getTxtProfileName() {
         return DriverManager.getDriver().findElement(txtProfileName);
     }
 
-    private WebElement getBtnNext(){
+    private WebElement getBtnNext() {
         return DriverManager.getDriver().findElement(btnNext);
     }
 
-    private WebElement getLiFilterField(){
+    private WebElement getLiFilterField() {
         return DriverManager.getDriver().findElement(liFilterField);
     }
 
-    private WebElement getCbbField(){
+    private WebElement getCbbField() {
         return DriverManager.getDriver().findElement(cbbField);
     }
 
-    private Select getField(){
+    private Select getField() {
         return new Select(getCbbField());
     }
 
-    private WebElement getCbbOperator(){
+    private WebElement getCbbOperator() {
         return DriverManager.getDriver().findElement(cbbOperator);
     }
 
-    private Select getOperator(){
+    private Select getOperator() {
         return new Select(getCbbOperator());
     }
 
-    private WebElement getTxtValue(){
+    private WebElement getTxtValue() {
         return DriverManager.getDriver().findElement(txtValue);
     }
 
-    private WebElement getBtnAddFilter(){
+    private WebElement getBtnAddFilter() {
         return DriverManager.getDriver().findElement(btnAddFilter);
     }
-    private WebElement getBtnRemoveFilter(){
+
+    private WebElement getBtnRemoveFilter() {
         return DriverManager.getDriver().findElement(btnRemoveFilter);
     }
 
 
-
-    public List<String> checkItemTypes(){
-        DriverManager.Hover(DriverManager.getDriver(),getLnkAdmin());
+    public List<String> checkItemTypes() {
+        DriverManager.Hover(DriverManager.getDriver(), getLnkAdmin());
         getLnkProfiles().click();
         getLnkAddNew().click();
         return getItemTypes().getOptions().stream().map(WebElement::getText).collect(Collectors.toList());
     }
 
     public void goToFilterField(String name) throws InterruptedException {
-        DriverManager.Hover(DriverManager.getDriver(),getLnkAdmin());
+        DriverManager.Hover(DriverManager.getDriver(), getLnkAdmin());
         getLnkProfiles().click();
         getLnkAddNew().click();
         getTxtProfileName().sendKeys(name);
@@ -81,30 +81,30 @@ public class ProfilePage extends BasePage{
         getLiFilterField().click();
     }
 
-    public void addNewFilter(){
+    public void addNewFilter() {
         getTxtValue().sendKeys(randomValue);
         getBtnAddFilter().click();
     }
 
-    public String getFieldValueSelect(){
+    public String getFieldValueSelect() {
         return getField().getFirstSelectedOption().getText();
     }
 
-    public String getOperatorValueSelect(){
+    public String getOperatorValueSelect() {
         return getOperator().getFirstSelectedOption().getText();
     }
 
-    public void removeFilter(){
-        String filter = getFieldValueSelect() + getOperatorValueSelect() + '"' + randomValue+ '"';
-        DriverManager.getDriver().findElement(By.xpath(String.format(filterXpath,filter))).click();
+    public void removeFilter() {
+        String filter = getFieldValueSelect() + getOperatorValueSelect() + '"' + randomValue + '"';
+        DriverManager.getDriver().findElement(By.xpath(String.format(filterXpath, filter))).click();
         getBtnRemoveFilter().click();
     }
 
-    public boolean isFilterDisplayed(){
-        try{
-            String filter = getFieldValueSelect() + getOperatorValueSelect() + '"' + randomValue+ '"';
-            return DriverManager.getDriver().findElement(By.xpath(String.format(filterXpath,filter))).isDisplayed();
-        } catch (NoSuchElementException e){
+    public boolean isFilterDisplayed() {
+        try {
+            String filter = getFieldValueSelect() + getOperatorValueSelect() + '"' + randomValue + '"';
+            return DriverManager.getDriver().findElement(By.xpath(String.format(filterXpath, filter))).isDisplayed();
+        } catch (NoSuchElementException e) {
             return false;
         }
     }
