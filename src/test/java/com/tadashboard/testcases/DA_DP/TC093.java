@@ -9,7 +9,8 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class TC093 extends BaseTestSetUp {
-    ConfigFileReader configFileReader =  new ConfigFileReader();
+    ConfigFileReader configFileReader = new ConfigFileReader();
+
     @Test(description = "Verify that user is able to remove filter criteria successfully")
     public void TC093_RemoveFilterCriteria() throws InterruptedException {
         LoginPage loginPage = new LoginPage();

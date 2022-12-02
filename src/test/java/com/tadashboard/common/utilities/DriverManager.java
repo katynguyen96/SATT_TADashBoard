@@ -8,6 +8,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
@@ -68,6 +70,18 @@ public class DriverManager {
         System.setProperty("webdriver.gecko.driver", Utilities.getProjectPath() + "\\Executables\\geckodriver.exe");
         driver = new FirefoxDriver();
         setupBrowser();
+    }
+
+    private static WebDriverWait explicitlyWait(long duration) {
+        return new WebDriverWait(driver, Duration.ofSeconds(duration));
+    }
+
+    public static WebElement waitToBeClickable(WebElement element, long duration) {
+        return explicitlyWait(duration).until(ExpectedConditions.elementToBeClickable(element));
+    }
+
+    public static void waitInVisibility(WebElement element, long duration) {
+        explicitlyWait(duration).until(ExpectedConditions.invisibilityOf(element));
     }
 
     public static void scrollToView(WebElement element) {

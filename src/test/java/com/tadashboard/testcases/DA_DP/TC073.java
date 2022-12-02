@@ -12,7 +12,8 @@ import java.util.Arrays;
 import java.util.stream.Collectors;
 
 public class TC073 extends BaseTestSetUp {
-    ConfigFileReader configFileReader =  new ConfigFileReader();
+    ConfigFileReader configFileReader = new ConfigFileReader();
+
     @Test(description = "Verify that all data profile types are listed in priority order under 'Item Type' dropped down menu")
     public void TC073_CheckItemTypesSelect() {
         LoginPage loginPage = new LoginPage();
@@ -21,6 +22,8 @@ public class TC073 extends BaseTestSetUp {
         ProfilePage profilePage = new ProfilePage();
         Log.info("Navigate to Profile page");
         profilePage.navigateToProfilePage();
+        Log.info("Click Add new Profile button");
+        profilePage.clickAddNewProfileButton();
         Log.info("Get Item types value");
         profilePage.getItemTypesValue();
         String[] list = {"Test Modules", "Test Cases", "Test Objectives", "Data Sets", "Actions", "Interface Entities", "Test Results", "Test Case Results", "Test Suites", "Bugs"};

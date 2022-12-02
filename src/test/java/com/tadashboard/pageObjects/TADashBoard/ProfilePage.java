@@ -65,8 +65,11 @@ public class ProfilePage extends BasePage {
 
 
     public List<String> getItemTypesValue() {
-        getLnkAddNew().click();
         return getItemTypes().getOptions().stream().map(WebElement::getText).collect(Collectors.toList());
+    }
+
+    public void clickAddNewProfileButton(){
+        getLnkAddNew().click();
     }
 
     public void navigateToProfilePage(){
@@ -75,7 +78,7 @@ public class ProfilePage extends BasePage {
     }
 
     public void addNewProfile(String name) {
-        getLnkAddNew().click();
+        clickAddNewProfileButton();
         getTxtProfileName().sendKeys(name);
         getBtnNext().click();
     }
