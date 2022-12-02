@@ -1,4 +1,4 @@
-package com.tadashboard.testcases.DA_MP;
+package com.tadashboard.testcases.DA_LOGIN;
 
 import com.tadashboard.common.utilities.DriverManager;
 import com.tadashboard.common.utilities.logs.Log;
@@ -9,20 +9,21 @@ import com.tadashboard.testcases.BaseTestSetUp;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class TC024 extends BaseTestSetUp {
+public class TC004 extends BaseTestSetUp {
     ConfigFileReader configFileReader = new ConfigFileReader();
-
-    @Test(description = "Verify that 'Bread Crums' navigation is correct")
-    public void TC024() {
+    @Test
+    public void TC004_LoginDifferentRepo() {
         LoginPage loginPage = new LoginPage();
+        Log.info("Login with valid account");
+        loginPage.login(configFileReader.getUsername(),"");
         DashBoardPage dashBoardPage = new DashBoardPage();
+        Log.info("Log out");
+        dashBoardPage.logout();
+        Log.info("Select Repo Test");
+        loginPage.selectRepo("Test");
         Log.info("Login with valid account");
         loginPage.login(configFileReader.getUsername(), "");
-        dashBoardPage.navigateAddPage();
-        dashBoardPage.fillInfoNewPage("Page 1","Overview", "");
-        dashBoardPage.fillInfoNewPage("Page 2","Overview","Page 1");
-        dashBoardPage.navigateBreadcrum("Page 1");
-
-        Assert.assertEquals(DriverManager.getTitle(),"TestArchitect ™ - Page 1");
+        String DBUrl = DriverManager.getDriver().getCurrentUrl();
+        Assert.assertTrue(DBUrl.contains("http://localhost/TADashboard/"));
     }
 }
