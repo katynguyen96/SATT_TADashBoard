@@ -15,8 +15,8 @@ public class BasePage {
     private final By btnOkNewPagePopupOK = By.id("OK");
     private final By lnkPanelConfigurationOk = By.xpath("//div[@id='div_panelConfigurationDlg']//input[@id='OK']");
     private final By lnkAdmin = By.xpath("//a[@href='#Administer']");
-    private final By lnkOverView = By.xpath("//li[@class='haschild']");
-    private final String lnkPageChildren = "//li[@class='haschild']//a[text()='%s']";
+    private final By lnkOverView = By.xpath("//li[@class='active haschild']");
+    private final String lnkPageChildren = "//li[@class='active haschild']//a[text()='%s']";
     private final By lnkPanels = By.xpath("//ul[@id='ulAdminister']//a[@href='panels.jsp']");
     private final By lnkDataProfiles = By.xpath("//ul[@id='ulAdminister']//a[@href='profiles.jsp']");
     private final By ddlItemTypes = By.xpath("//select[@id='cbbEntityType']");

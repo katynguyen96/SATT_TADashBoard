@@ -1,6 +1,7 @@
 package com.tadashboard.testcases.DA_PANEL;
 
 import com.tadashboard.common.utilities.logs.Log;
+import com.tadashboard.common.utilities.reader.ConfigFileReader;
 import com.tadashboard.pageObjects.TADashBoard.BasePage;
 import com.tadashboard.pageObjects.TADashBoard.LoginPage;
 import com.tadashboard.testcases.BaseTestSetUp;
@@ -8,11 +9,12 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class TC049 extends BaseTestSetUp {
+    ConfigFileReader configFileReader = new ConfigFileReader();
     @Test(description = "Verify that all folder paths of corresponding item type ( e.g. Actions, Test Modules) are correct in 'Select Folder' form")
     public void TC049_folderPathCorrect() throws InterruptedException {
         LoginPage loginPage = new LoginPage();
         Log.info("Login with valid account");
-        loginPage.login("test", "test");
+        loginPage.login(configFileReader.getUsername(), "test");
         BasePage basePage = new BasePage();
         Log.info("Go to Global Setting -> Add page");
         Log.info("Enter info into all required fields on New Page dialog");

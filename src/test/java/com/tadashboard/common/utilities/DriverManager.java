@@ -9,10 +9,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
 
-import java.net.URI;
 import java.time.Duration;
-import java.util.HashMap;
-import java.util.Map;
 
 public class DriverManager {
     static WebDriver driver;
@@ -73,28 +70,13 @@ public class DriverManager {
         setupBrowser();
     }
 
-    private static Map<String, String> getParamsOfUrl() {
-        String[] params = URI.create(driver.getCurrentUrl()).getQuery().split("&");
-        Map<String, String> map = new HashMap<>();
-        for (String param : params) {
-            String name = param.split("=")[0];
-            String value = param.split(name + "=")[1];
-            map.put(name, value);
-        }
-        return map;
-    }
-
     public static void scrollToView(WebElement element) {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].scrollIntoView();", element);
     }
 
-    public static String getParamValue(String paramName) {
-        return getParamsOfUrl().get(paramName);
-    }
-
     public static void alertAccept() {
-        DriverManager.getDriver().switchTo().alert().accept();
+        driver.switchTo().alert().accept();
     }
 
     public static void setImplicitlyWait(long duration) {
@@ -107,7 +89,7 @@ public class DriverManager {
     }
 
     public static String getAlertMessage() {
-        return DriverManager.getDriver().switchTo().alert().getText();
+        return driver.switchTo().alert().getText();
     }
 
     public static Boolean isAlertDisplayed() {
