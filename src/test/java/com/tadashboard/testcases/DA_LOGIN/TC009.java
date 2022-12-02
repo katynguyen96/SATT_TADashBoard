@@ -12,9 +12,9 @@ public class TC009 extends BaseTestSetUp {
     public void TC009_LoginSpecialCharacter() throws InterruptedException {
         LoginPage loginPage = new LoginPage();
         Log.info("Login with valid account");
-        loginPage.login("minh!@^","");
+        loginPage.login("minh!@^", "");
         Thread.sleep(1000);
         String DBTitle = DriverManager.getDriver().getTitle();
-        Assert.assertEquals(DBTitle,"TestArchitect ™ - Execution Dashboard");
+        Assert.assertEquals(DBTitle, "TestArchitect ™ - Execution Dashboard");
     }
 }

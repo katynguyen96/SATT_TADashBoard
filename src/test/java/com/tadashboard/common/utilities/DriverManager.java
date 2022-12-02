@@ -8,11 +8,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.net.URI;
 import java.time.Duration;
-import java.util.HashMap;
-import java.util.Map;
 
 public class DriverManager {
     static WebDriver driver;
@@ -73,15 +72,16 @@ public class DriverManager {
         setupBrowser();
     }
 
-    private static Map<String, String> getParamsOfUrl() {
-        String[] params = URI.create(driver.getCurrentUrl()).getQuery().split("&");
-        Map<String, String> map = new HashMap<>();
-        for (String param : params) {
-            String name = param.split("=")[0];
-            String value = param.split(name + "=")[1];
-            map.put(name, value);
-        }
-        return map;
+    private static WebDriverWait explicitlyWait(long duration) {
+        return new WebDriverWait(driver, Duration.ofSeconds(duration));
+    }
+
+    public static WebElement waitToBeClickable(WebElement element, long duration) {
+        return explicitlyWait(duration).until(ExpectedConditions.elementToBeClickable(element));
+    }
+
+    public static void waitInVisibility(WebElement element, long duration) {
+        explicitlyWait(duration).until(ExpectedConditions.invisibilityOf(element));
     }
 
     public static void scrollToView(WebElement element) {
@@ -89,25 +89,21 @@ public class DriverManager {
         js.executeScript("arguments[0].scrollIntoView();", element);
     }
 
-    public static String getParamValue(String paramName) {
-        return getParamsOfUrl().get(paramName);
-    }
-
     public static void alertAccept() {
-        DriverManager.getDriver().switchTo().alert().accept();
+        driver.switchTo().alert().accept();
     }
 
     public static void setImplicitlyWait(long duration) {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(duration));
     }
 
-    public static void Hover(WebDriver driver, WebElement element) {
+    public static void hover(WebDriver driver, WebElement element) {
         Actions action = new Actions(driver);
         action.moveToElement(element).perform();
     }
 
     public static String getAlertMessage() {
-        return DriverManager.getDriver().switchTo().alert().getText();
+        return driver.switchTo().alert().getText();
     }
 
     public static String getTitle(){
