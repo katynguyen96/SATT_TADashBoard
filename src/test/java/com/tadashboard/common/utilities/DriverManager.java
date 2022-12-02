@@ -106,6 +106,10 @@ public class DriverManager {
         return driver.switchTo().alert().getText();
     }
 
+    public static String getTitle(){
+        return DriverManager.getTitle();
+    }
+
     public static Boolean isAlertDisplayed() {
         try {
             driver.switchTo().alert();
