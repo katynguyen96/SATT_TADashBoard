@@ -47,6 +47,7 @@ public class ConfigFileReader {
         if (username != null) return username;
         else throw new RuntimeException("username not specified in the Configuration.properties file.");
     }
+
     public String getBrowserDriver() {
         String browser = properties.getProperty("browser");
         if (browser != null) return browser;
