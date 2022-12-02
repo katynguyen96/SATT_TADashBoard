@@ -64,7 +64,7 @@ public class ProfilePage extends BasePage {
     }
 
 
-    public List<String> checkItemTypes() {
+    public List<String> getItemTypesValue() {
         DriverManager.Hover(DriverManager.getDriver(), getLnkAdmin());
         getLnkProfiles().click();
         getLnkAddNew().click();
