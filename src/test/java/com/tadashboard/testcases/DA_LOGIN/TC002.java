@@ -18,7 +18,7 @@ public class TC002 extends BaseTestSetUp {
         DriverManager.setImplicitlyWait(5);
 
         Log.info("Verify that Dashboard Error message Username or password is invalid appears");
-        String mess = DriverManager.getAlertMsg();
+        String mess = DriverManager.getAlertMessage();
         Assert.assertEquals(mess, "Username or password is invalid");
     }
 }

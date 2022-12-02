@@ -119,9 +119,4 @@ public class BasePage {
     public String getFolderPath() {
         return getTxtFolderPath().getAttribute("value");
     }
-
-//    public void logout() {
-//        DriverManager.hover(DriverManager.getDriver(), getLnkWelcome());
-//        getLnkLogout().click();
-//    }
 }

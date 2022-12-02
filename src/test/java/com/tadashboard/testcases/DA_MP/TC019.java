@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 
 public class TC019 extends BaseTestSetUp {
     @Test(description = "Verify that user is able to add additional sibling page levels to the parent page successfully")
-    public void TC019_AddAdditionalSiblingPage() throws InterruptedException {
+    public void TC019_AddAdditionalSiblingPage() {
         ConfigFileReader configFileReader = new ConfigFileReader();
         LoginPage loginPage = new LoginPage();
         Log.info("Login with valid account");
