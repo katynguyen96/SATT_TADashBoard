@@ -19,10 +19,10 @@ public class TC024 extends BaseTestSetUp {
         Log.info("Login with valid account");
         loginPage.login(configFileReader.getUsername(), "");
         dashBoardPage.navigateAddPage();
-        dashBoardPage.fillInfoNewPage("Page 1","Overview", "");
-        dashBoardPage.fillInfoNewPage("Page 2","Overview","Page 1");
+        dashBoardPage.fillInfoNewPage("Page 1", "Overview", "");
+        dashBoardPage.fillInfoNewPage("Page 2", "Overview", "Page 1");
         dashBoardPage.navigateBreadcrum("Page 1");
 
-        Assert.assertEquals(DriverManager.getTitle(),"TestArchitect ™ - Page 1");
+        Assert.assertEquals(DriverManager.getTitle(), "TestArchitect ™ - Page 1");
     }
 }
