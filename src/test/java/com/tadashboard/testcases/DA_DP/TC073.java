@@ -19,6 +19,8 @@ public class TC073 extends BaseTestSetUp {
         Log.info("Login with valid account");
         loginPage.login(configFileReader.getUsername(), "");
         ProfilePage profilePage = new ProfilePage();
+        Log.info("Navigate to Profile page");
+        profilePage.navigateToProfilePage();
         Log.info("Get Item types value");
         profilePage.getItemTypesValue();
         String[] list = {"Test Modules", "Test Cases", "Test Objectives", "Data Sets", "Actions", "Interface Entities", "Test Results", "Test Case Results", "Test Suites", "Bugs"};

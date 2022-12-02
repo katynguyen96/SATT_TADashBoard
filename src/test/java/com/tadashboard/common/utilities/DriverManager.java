@@ -83,7 +83,7 @@ public class DriverManager {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(duration));
     }
 
-    public static void Hover(WebDriver driver, WebElement element) {
+    public static void hover(WebDriver driver, WebElement element) {
         Actions action = new Actions(driver);
         action.moveToElement(element).perform();
     }

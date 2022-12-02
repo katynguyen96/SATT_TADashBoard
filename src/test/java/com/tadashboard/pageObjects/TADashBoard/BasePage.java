@@ -146,12 +146,12 @@ public class BasePage {
     }
 
     public void logout() {
-        DriverManager.Hover(DriverManager.getDriver(), getLnkWelcome());
+        DriverManager.hover(DriverManager.getDriver(), getLnkWelcome());
         getLnkLogout().click();
     }
 
     public void addPage(String pageName, String pageParent) {
-        DriverManager.Hover(DriverManager.getDriver(), getLnkSetting());
+        DriverManager.hover(DriverManager.getDriver(), getLnkSetting());
         getLnkAddPage().click();
         getTxtPageName().sendKeys(pageName);
         getParentPage().selectByVisibleText(pageParent);
@@ -159,19 +159,19 @@ public class BasePage {
     }
 
     public void addEmptyPanel() {
-        DriverManager.Hover(DriverManager.getDriver(), getLnkAdmin());
+        DriverManager.hover(DriverManager.getDriver(), getLnkAdmin());
         getLnkPanels().click();
         getLnkAddNew().click();
         getBtnPanelPopupOK().click();
     }
 
     public Boolean isPageChildrenDisplay(String pageName) {
-        DriverManager.Hover(DriverManager.getDriver(), getLnkOverView());
+        DriverManager.hover(DriverManager.getDriver(), getLnkOverView());
         return getLnkOverView().findElement(By.xpath(String.format(lnkPageChildren, pageName))).isDisplayed();
     }
 
     public void createPanel(String panelName, String series) {
-        DriverManager.Hover(DriverManager.getDriver(), getLnkSetting());
+        DriverManager.hover(DriverManager.getDriver(), getLnkSetting());
         getLnkCreatePanel().click();
         getTxtDisplayName().sendKeys(panelName);
         getSeries().selectByValue(series);

@@ -17,7 +17,11 @@ public class TC093 extends BaseTestSetUp {
         loginPage.login(configFileReader.getUsername(), "");
         ProfilePage profilePage = new ProfilePage();
         Log.info("Go to filter field");
-        profilePage.goToFilterField("test");
+        profilePage.navigateToProfilePage();
+        Log.info("Add new Profile");
+        profilePage.addNewProfile("test");
+        Log.info("Go to filter field");
+        profilePage.navigateToFilterField();
         Log.info("Add new filter");
         profilePage.addNewFilter();
         Log.info("Remove filter");

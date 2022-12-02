@@ -65,18 +65,22 @@ public class ProfilePage extends BasePage {
 
 
     public List<String> getItemTypesValue() {
-        DriverManager.Hover(DriverManager.getDriver(), getLnkAdmin());
-        getLnkProfiles().click();
         getLnkAddNew().click();
         return getItemTypes().getOptions().stream().map(WebElement::getText).collect(Collectors.toList());
     }
 
-    public void goToFilterField(String name) throws InterruptedException {
-        DriverManager.Hover(DriverManager.getDriver(), getLnkAdmin());
+    public void navigateToProfilePage(){
+        DriverManager.hover(DriverManager.getDriver(), getLnkAdmin());
         getLnkProfiles().click();
+    }
+
+    public void addNewProfile(String name) {
         getLnkAddNew().click();
         getTxtProfileName().sendKeys(name);
         getBtnNext().click();
+    }
+
+    public void navigateToFilterField() throws InterruptedException {
         Thread.sleep(1000);
         getLiFilterField().click();
     }
